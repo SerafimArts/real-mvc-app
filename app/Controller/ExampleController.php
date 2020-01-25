@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Model\Button;
 use App\Model\Container;
+use App\Model\HtmlElement;
 use App\Model\TextElement;
 use Kernel\Controller\Controller;
 use Kernel\Event\OnBlur;
@@ -61,7 +62,7 @@ class ExampleController extends Controller
      */
     public function onButtonEnter(Button $button): void
     {
-        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #09c; outline: none;';
+        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 2px 1px #03f; outline: none;';
     }
 
     /**
@@ -72,7 +73,7 @@ class ExampleController extends Controller
      */
     public function onButtonLeave(Button $button): void
     {
-        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #03f; outline: none;';
+        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #999; outline: none;';
     }
 
     /**
@@ -119,5 +120,27 @@ class ExampleController extends Controller
     public function onInputClick(TextElement $input): void
     {
         $input->placeholder = 'Во славу котиков!';
+    }
+
+    /**
+     * @OnMouseEnter("text")
+     *
+     * @param TextElement $input
+     * @return void
+     */
+    public function onInputEnter(TextElement $input): void
+    {
+        $input->style = 'border: none; box-shadow: 0 0 2px 1px #03f; outline: none;';
+    }
+
+    /**
+     * @OnMouseLeave("text")
+     *
+     * @param TextElement $input
+     * @return void
+     */
+    public function onInputLeave(TextElement $input): void
+    {
+        $input->style = 'border: none; box-shadow: 0 0 0 1px #999; outline: none;';
     }
 }

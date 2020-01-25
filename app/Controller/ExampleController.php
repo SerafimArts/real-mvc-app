@@ -100,6 +100,7 @@ class ExampleController extends Controller
 
     /**
      * @OnBlur("text")
+     * @OnMouseLeave("text")
      *
      * @param TextElement $input
      * @return void
@@ -131,16 +132,5 @@ class ExampleController extends Controller
     public function onInputEnter(TextElement $input): void
     {
         $input->style = 'border: none; box-shadow: 0 0 2px 1px #03f; outline: none;';
-    }
-
-    /**
-     * @OnMouseLeave("text")
-     *
-     * @param TextElement $input
-     * @return void
-     */
-    public function onInputLeave(TextElement $input): void
-    {
-        $input->style = 'border: none; box-shadow: 0 0 0 1px #999; outline: none;';
     }
 }

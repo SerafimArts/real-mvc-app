@@ -96,6 +96,6 @@ class ExampleController extends Controller
      */
     public function onInputClick(TextElement $input): void
     {
-        $input->placeholder = 'Введите какую-нибудь хуйню!';
+        $input->placeholder = 'Во славу котиков!';
     }
 }

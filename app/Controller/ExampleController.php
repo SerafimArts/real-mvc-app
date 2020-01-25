@@ -13,13 +13,13 @@ namespace App\Controller;
 
 use App\Model\Button;
 use App\Model\Container;
-use App\Model\Form;
 use App\Model\TextElement;
 use Kernel\Controller\Controller;
-use Kernel\Event\Event;
 use Kernel\Event\OnBlur;
 use Kernel\Event\OnClick;
 use Kernel\Event\OnFocus;
+use Kernel\Event\OnMouseEnter;
+use Kernel\Event\OnMouseLeave;
 use Kernel\Event\Route;
 use Kernel\Model\ModelInterface;
 
@@ -41,13 +41,38 @@ class ExampleController extends Controller
         return Container::new([
             TextElement::new('text')
                 ->with(static function (TextElement $text) {
-                    $text->style = 'border: none; box-shadow: 0 0 0 1px #666; outline: none;';
+                    $text->style = 'border: none; box-shadow: 0 0 0 1px #999; outline: none;';
                 }),
-            new Button('button')
+            Button::new('button')
+                ->with(static function (Button $button) {
+                    $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #999; outline: none;';
+                }),
         ])
             ->with(static function (Container $container) {
                 $container->style = 'padding: 100px';
             });
+    }
+
+    /**
+     * @OnMouseEnter("button")
+     *
+     * @param Button $button
+     * @return void
+     */
+    public function onButtonEnter(Button $button): void
+    {
+        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #09c; outline: none;';
+    }
+
+    /**
+     * @OnMouseLeave("button")
+     *
+     * @param Button $button
+     * @return void
+     */
+    public function onButtonLeave(Button $button): void
+    {
+        $button->style = 'margin-left: 10px; border: none; box-shadow: 0 0 0 1px #03f; outline: none;';
     }
 
     /**
@@ -58,9 +83,6 @@ class ExampleController extends Controller
      */
     public function onButtonClick(Button $button): void
     {
-        /** @var TextElement $text */
-        $text = $this->findById('text');
-
         $button->value = 'Жмякнуто целых ' . (++$this->clicked) . ' раз!';
     }
 
@@ -83,7 +105,7 @@ class ExampleController extends Controller
      */
     public function onInputBlur(TextElement $input): void
     {
-        $input->style = 'border: none; box-shadow: 0 0 0 1px #666; outline: none;';
+        $input->style = 'border: none; box-shadow: 0 0 0 1px #999; outline: none;';
 
         $input->placeholder = '';
     }

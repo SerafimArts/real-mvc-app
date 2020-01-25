@@ -1,35 +1,35 @@
 # Real MVC
 
-Это пример того, почему MVC в вебе - это очень плохо. Это **реальное** MVC 
-приложение, написанное на PHP по всем заветам дядечек из Xerox.
+This is an example of why MVC on the web is so bad. 
+This is a **real** MVC application written in PHP according 
+to all the precepts of the Xerox "uncles" =)))
 
-Результат выглядит примерно так:
+The result looks something like this:
 
 ![](https://habrastorage.org/webt/4r/9r/2f/4r9r2flpjzzkxwqrcihlvjfz4ym.gif)
 
-## Установка
+## Installation
 
 - `cp .env.example .env`
 - `composer install`
 
-## Запуск
+## Run
 
 - `php app.php`
 - `cd public && php -S 0.0.0.0:80`
 
-Открыть в браузере `http://localhost`  наслаждаться.
+Open in browser `http://localhost` and enjoy!
 
-Весь код приложения лежит в `app/`.
+All application code located in `app/`.
 
 ### Примечание
 
-Если меняете порт сокет сервера в файле `.env`, то требуется пересборка ассетов:
+If you change the server socket port in the `.env` file, 
+then rebuilding an assets is required:
 
 - `npm run build`
 
-## Лицензия
-
-TL;DR: Ебитесь с этим как хотите.
+## License
 
 ```
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE

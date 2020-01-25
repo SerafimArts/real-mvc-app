@@ -105,10 +105,19 @@ class ExampleController extends Controller
      * @param TextElement $input
      * @return void
      */
-    public function onInputBlur(TextElement $input): void
+    public function onInputBlurOrMouseLeave(TextElement $input): void
     {
         $input->style = 'border: none; box-shadow: 0 0 0 1px #999; outline: none;';
+    }
 
+    /**
+     * @OnBlur("text")
+     *
+     * @param TextElement $input
+     * @return void
+     */
+    public function onInputBlur(TextElement $input): void
+    {
         $input->placeholder = '';
     }
 
